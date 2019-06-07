@@ -1,0 +1,23 @@
+{
+  "name": "word-node-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wglm2014/word-node-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wglm2014/word-node-app/issues"
+  },
+  "homepage": "https://github.com/Wglm2014/word-node-app#readme",
+  "dependencies": {
+    "inquirer": "^6.3.1",
+    "random-words": "^1.1.0"
+  }
+}

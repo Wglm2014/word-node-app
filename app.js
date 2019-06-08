@@ -1,47 +1,65 @@
+
 const wordList = require("random-words");
 const inquirer = require("inquirer");
+const word = require("./word");
 
-let word = wordList();
-let pressedKeys = 0;
+//chooses a ramdon word using random-words package
+let wordToGuess = wordList().split("");
+//create the new object containing the word array and letters objects
+let userWord = new word(wordToGuess);
+userWord.objectChards();
+//counter of changes the user had
+let chancesLeft = wordToGuess.length;
+let wins = 0;
+let lost = 0;
 
-displayWord(word.split("").fill("_"));
-console.log(word);
+//console.log(wordToGuess);
+displayWord("-");
 
-function displayWord(underWord) {
-    console.log(underWord.join(" "));
-    if (pressedKeys === word.length) {
+function displayWord(key) {
+    const guessedLetters = userWord.trueFalse(key);
+
+    //console.log(userWord);
+    console.log(guessedLetters);
+    console.log("Changes Left: " + chancesLeft);
+    const equal = (guessedLetters.split(" ").join("").trim() === userWord.wordChars.join("")) ? true : false;
+    if (equal) {
+        wins++;
+        console.log(`CORRECT! you have ${wins} victorious!`);
+        continueNext();
+    }
+    else if (chancesLeft === 0) {
+        lost++;
+        console.log(`OOPS MAYBE NEXT TIME, you have ${lost} fails!`);
         continueNext();
     } else {
         eventKey();
     }
-
 }
+
+function eventKey() {
+    inquirer.prompt({
+        type: "text",
+        message: "Guess a letter! ",
+        name: "key"
+    }).then(keyPressed => {
+        chancesLeft--;
+        displayWord(keyPressed.key);
+    });
+}
+
+//iquire if the user wants to keep playing
 function continueNext() {
     inquirer.prompt({
         type: "confirm", message: "continue playing", name: "more"
     }).then(answer => {
         if (answer.more) {
-            word = wordList();
-            displayWord();
-        }
+            //re initialized all the values for a nuew word
+            wordToGuess = wordList().split("");
+            userWord = new word(wordToGuess);
+            userWord.objectChards();
+            chancesLeft = wordToGuess.length;
+            displayWord("-");
+        } else { console.log(" good bye"); }
     });
-}
-function eventKey() {
-    inquirer.prompt({
-        type: "text",
-        message: "Please press a character: ",
-        name: "key"
-    }).then(keyPressed => {
-        compareChar(keyPressed.key);
-    });
-}
-
-function compareChar(key) {
-    let characters = "";
-    const arrWord = word.split("");
-    arrWord.forEach(element => {
-        if (key === element) { characters += key; console.log(characters); } else { characters += "_"; }
-    })
-    console.log(characters);
-    displayWord(characters.split(""));
 }

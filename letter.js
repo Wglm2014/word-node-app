@@ -1,8 +1,18 @@
-function compareChar(word, key) {
-    let characters = "";
-    word.map(function (newLetter, element) {
-        if (key === element) { newLetter += key; } else { newLetter += "_"; }
-        return newLetter;
-    }, characters);
-    displayWords(characters);
+function Letter(char) {
+    this.char = char;
+    this.charGuessed = false;
 }
+
+Letter.prototype.returnCharHolder = function () {
+    if (this.charGuessed) {
+        return this.char;
+    } else { return " _ " }
+}
+
+Letter.prototype.checkItOut = function (pressedKey) {
+    if (pressedKey === this.char) {
+        this.charGuessed = true;
+    }
+}
+
+module.exports = Letter;

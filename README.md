@@ -1,5 +1,5 @@
 # word-node-app
-Is a command line game that uses the package inquirer, using javascript constructors and inquirer npm package inquierer, to allow the user to enter the letters is guessing. The npm package word generates random words.
+Is a command line game that uses the package inquirer, using javascript constructors and inquirer npm package inquierer, to allow the user to enter the letters is guessing. The npm package random-words generates random words.
 
  **Letter.js**: Contains a constructor, Letter. This constructor should be able to either display an underlying character or a blank placeholder (such as an underscore), depending on whether or not the user has guessed the letter. That means the constructor should define:
 
@@ -25,4 +25,41 @@ Is a command line game that uses the package inquirer, using javascript construc
 
   * Prompts the user for each guess and keeps track of the user's remaining guesses
   
+  ## Getting Started
   
+* Before starting with you need to install Nodejs and have basic understanding of it and npm (node package manager) this is the official line for the documentation [Nodejs Docs](https://nodejs.org/en/docs/), also know how to clone repositories from Github to your local machine [Git Reference](https://www.git-scm.com/docs). 
+
+## Installing and Starting the app locally
+
+Clone the app from this repository to you local drive of you PC (previously I recomended to have knowledge of how to clone repositories and where to find the information) and go to the root directory of the project, then run the command
+
+```
+npm install
+```
+This will take only a few minuts, the packages are small, and it should install node modules within the server directory. 
+
+After the installation finish, run the following command in your terminal:
+
+```
+node word-node-app
+```
+
+Your app should now be running on on the command prompt.
+
+## Deployment 
+
+This program can not be deploy on the web, since the user interface is for the command line
+
+## Built With
+
+### for the back end server and data persistance
+* Visual Studio Code
+* Nodejs 
+* Express
+* inquirer
+* random-words
+
+
+# Author
+* Wilson Linares 
+
